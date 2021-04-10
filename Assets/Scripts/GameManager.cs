@@ -13,9 +13,25 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _player;
 
+    private bool _isOnMenu = false;
+
+    private UIManager _uiManager;
+    private MenuManager _menuManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Caso player nn exista estamos no menu!
+        if (_player == null)
+        {
+            _isOnMenu = true;
+        }
+
+        if (_isOnMenu) { 
+            _menuManager = GameObject.Find("Canvas").GetComponent<MenuManager>();
+        }
+        else _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
 
     }
 
